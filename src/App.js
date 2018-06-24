@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import * as api from './containers/api'
 import { withStyles, CssBaseline } from '@material-ui/core'
+import Layout from './containers/layout'
+import LoginPage from './containers/loginpage'
 
-import Layout from './components/layout'
-import LoginPage from './components/loginpage'
+import * as api from './containers/api'
 import * as urls from './urls'
 
 
