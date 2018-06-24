@@ -11,6 +11,9 @@ const styles = {
   self: {
     display: 'flex',
     justifyContent: 'center',
+  },
+  btn: {
+    maxWidth: '100px',
   }
 };
 
@@ -36,7 +39,7 @@ class LoginPage extends Component {
               
               onChange={this.handleChangePassword}
             />
-            <Button variant="raised" onClick={this.handleSubmit}>Login</Button>
+            <Button variant="raised" onClick={this.handleSubmit} className={classes.btn}>Login</Button>
           </div>
         </form>
       </div>
