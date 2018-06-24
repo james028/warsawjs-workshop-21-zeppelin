@@ -23,3 +23,5 @@ export function login({username, password}) {
                })
      }
 }
+
+export const logout = createAction(actionTypes.LOGOUT);

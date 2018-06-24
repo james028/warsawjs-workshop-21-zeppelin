@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 
 import * as urls from '../urls';
+import * as actions from '../actions';
+import * as selectors from '../selectors';
+
 import Header from '../components/header';
 import ProjectCreatePage from '../containers/ProjectCreatePage';
 import ProjectEditPage from '../containers/ProjectEditPage';
@@ -23,8 +26,20 @@ const styles = {
 };
 
 class Layout extends Component {
+  static propTypes = {
+    isLoggedIn: PropTypes.bool.isRequired,
+    logout: PropTypes.func.isRequired,
+    classes: PropTypes.shape({}).isRequired,
+  };
+  
   render() {
-    const { classes } = this.props;
+    const { isLoggedIn, logout, classes } = this.props;
+
+    if (!isLoggedIn) {
+      return (
+        <Redirect to={urls.LOGIN} />
+      );
+    }
     
     return (
       <Fragment>
@@ -42,4 +57,14 @@ class Layout extends Component {
   }
 }
 
-export default withStyles(styles)(Layout);
+function mapStateToProps(state) {
+  return {
+    isLoggedIn: selectors.isLoggedIn(state),
+  };
+}
+
+const mapDispatchToProps = {
+  logout: actions.logout,
+};
+
+export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(Layout));

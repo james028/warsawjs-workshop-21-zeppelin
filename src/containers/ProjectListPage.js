@@ -25,7 +25,7 @@ class ProjectListPage extends PureComponent {
 
     return (
       <div >
-2
+          It works !
       </div>
     );
   }

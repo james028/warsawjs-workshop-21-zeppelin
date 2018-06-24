@@ -15,6 +15,10 @@ import {
 } from '@material-ui/core';
 import { Menu as MenuIcon } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
+import { connect } from 'react-redux';
+import LoginPage from '../containers/loginpage'
+import * as actions from '../actions';
 
 import * as urls from '../urls';
 
@@ -110,4 +114,10 @@ class Header extends PureComponent {
   }
 }
 
-export default withStyles(styles)(Header);
+const mapDispatchToProps = {
+    logout: actions.logout
+};
+
+//export default withStyles(styles)(Header);
+
+export default withStyles(styles)(withRouter(connect(null, mapDispatchToProps)(Header)));
